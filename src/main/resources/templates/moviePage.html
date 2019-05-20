@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Movies Listing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+<body>
+    <h1 align="center" th:text="${movie.title}">title</h1>
+
+    <div class="movie-display">
+        <p align="center" th:text="${movie.description}">desc</p>
+
+        <table align="center" width="100%">
+            <tr>
+                <td align="center">Movie ID</td>
+                <td th:text="${movie.movie_id}" align="center">id</td>
+            </tr>
+            <tr>
+                <td align="center">Producer</td>
+                <td th:text="${movie.producer}" align="center">producer</td>
+            </tr>
+            <tr>
+                <td align="center">Available in 3D</td>
+                <td th:text="${movie.available_in_3d}" align="center">3d</td>
+            </tr>
+            <tr>
+                <td align="center">Age Rating</td>
+                <td th:text="${movie.age_rating}" align="center">age</td>
+            </tr>
+            <tr>
+                <td align="center">likes</td>
+                <td th:text="${movie.likes}" align="center">likes</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="movie-display">
+        <h1>Comments</h1>
+
+        <div th:each="comment : ${comments}" class="comment">
+            <p th:text="'User: ' + ${comment.user}">user</p>
+            <p th:text="'Date Created : ' + ${comment.dateCreated}">date</p>
+            <p th:text="'Likes : ' + ${comment.like}">like</p>
+            <p th:text="${comment.message}" class="commentText"></p>
+        </div>
+
+    </div>
+
+</body>
+</html>
